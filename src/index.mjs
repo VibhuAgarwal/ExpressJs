@@ -1,13 +1,11 @@
 import express, { request, response } from "express";
-import usersRouter from "./routes/users.mjs";
-import productsRouter from "./routes/products.mjs";
+import routes from "./routes/index.mjs";
 
 const app = express();
 
 //middleware usage
 app.use(express.json());
-app.use(usersRouter);
-app.use(productsRouter);
+app.use(routes);
 
 const PORT = process.env.PORT || 3000;
 
