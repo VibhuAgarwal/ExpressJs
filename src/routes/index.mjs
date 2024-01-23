@@ -6,6 +6,5 @@ const router = Router();
 
 router.use(usersRouter);
 router.use(productsRouter);
-console.log("fjfjdbf");
 
 export default router;
