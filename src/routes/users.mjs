@@ -20,12 +20,20 @@ router.get(
     .isLength({ min: 3, max: 10 })
     .withMessage("Must be at least3-10 chars"),
   (request, response) => {
+    console.log(request.sessionID);
+    request.sessionStore.get(request.session.id, (err, sessionData) => {
+      if (err) {
+        console.log(err);
+        throw err;
+      }
+      console.log(sessionData);
+    });
     const result = validationResult(request);
     console.log(result);
     const {
       query: { filter, value },
     } = request;
-    //when filter and value are undefiend
+    //when filter and value are undefined
     if (!filter || !value) return response.send(mockUsers);
     if (filter && value)
       return response.send(
